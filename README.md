@@ -38,14 +38,17 @@ Say this to Bob:
 - beautiful terminals
 
 ## Installation
-Download the AppImage from **Releases**.
+Install Ollama:
+Step 1: **curl -fsSL https://ollama.com/install.sh | sh**
+Step 2: **ollama pull qwen2.5:0.5b**
+Step 3: **Download the AppImage from Releases**
 
 Make executable:
 
-chmod +x Spiltixal-x86_64.AppImage
+**chmod +x Spiltixal-x86_64.AppImage**
 
 Then run
-./Spiltixal-x86_64.AppImage
+**./Spiltixal-x86_64.AppImage**
 
 Inside you can choose if you want to install Spiltixal into /usr/bin/
 
