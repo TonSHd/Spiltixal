@@ -2,7 +2,8 @@
 Spiltixal is a fully customizable Linux terminal featuring Bob! It's a lightweight local AI assistant. It can help you with simple coding and commands!
 
 Built in Rust
-Some visual assets were created with AI
+
+# Some visual assets were created with AI
 
 # Bob (Your AI Companion)
 AI model based on the Alibaba Cloud server.
