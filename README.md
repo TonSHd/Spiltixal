@@ -10,9 +10,9 @@ It can help you with:
   - Simple coding
   - Be your friend
 
-Bob is design to be simple, friendly and customizable.
-However if you want to reduce RAM usage since Bob is local AI.
-You can turn AI off
+Bob is designed to be simple, friendly and customizable.
+However, if you want to reduce RAM usage since Bob is local AI.
+You can turn Bob off.
 
 ## Features
 - Fully customizable terminal appearance
@@ -36,7 +36,8 @@ Then run
 
 Inside you can choose if you want to install Spiltixal into /usr/bin/
 
-Once you press "Yes". You can run it from anywhere.
+Once you press "Yes"
+You can run it from anywhere.
 
 # If you want to support me ❤️
 BTC Wallet: bc1qz6v0tl48hpv075l0u3lww7mj4dj5xarjtkwa2x
