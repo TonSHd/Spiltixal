@@ -39,9 +39,9 @@ Say this to Bob:
 
 ## Installation
 Install Ollama:
-# Step 1: **curl -fsSL https://ollama.com/install.sh | sh**
-# Step 2: **ollama pull qwen2.5:0.5b**
-# Step 3: **Download the AppImage from Releases**
+- Step 1: **curl -fsSL https://ollama.com/install.sh | sh**
+- Step 2: **ollama pull qwen2.5:0.5b**
+- Step 3: **Download the AppImage from Releases**
 
 Make executable:
 
