@@ -1006,6 +1006,7 @@ pub struct CustomizeState {
     pub drawing: Vec<DrawStroke>,
     pub active_stroke: Vec<Pos2>,
     pub stroke_width: f32,
+    pub draw_opacity: u8,
     pub drag_layer: Option<usize>,
     pub drag_offset: Vec2,
     pub save_message: String,
@@ -1031,6 +1032,7 @@ pub enum OverlayAnimation {
     Floating,
 }
 
+#[derive(Clone)]
 pub struct OverlayLayer {
     pub path: PathBuf,
     pub is_video: bool,
@@ -1116,6 +1118,7 @@ impl CustomizeState {
             drawing: Vec::new(),
             active_stroke: Vec::new(),
             stroke_width: 2.0,
+            draw_opacity: 220,
             drag_layer: None,
             drag_offset: Vec2::ZERO,
             save_message: String::new(),
@@ -1488,6 +1491,13 @@ impl Spiltixal {
         }
     }
 
+    fn open_customize(&mut self) {
+        let mut state = CustomizeState::from_config(&self.config);
+        state.layers = self.applied_layers.clone();
+        state.drawing = self.applied_drawing.clone();
+        self.customize = Some(state);
+    }
+
     fn load_customize_layout() -> Option<SavedCustomizeLayout> {
         let home = dirs::home_dir()?;
         let path = home.join(".config").join("spiltixal").join("layout.json");
@@ -1587,15 +1597,13 @@ impl Spiltixal {
                     })
                     .collect::<Vec<_>>();
                 if points.len() > 1 {
+                    let mut color = state.fg_color;
+                    color[3] = state.draw_opacity;
                     state.drawing.push(DrawStroke {
                         points,
-                        color: state.fg_color,
+                        color,
                         width: state.stroke_width,
                     });
-                    if state.drawing.len() > 300 {
-                        let extra = state.drawing.len() - 300;
-                        state.drawing.drain(0..extra);
-                    }
                 }
                 state.active_stroke.clear();
             }
@@ -1683,7 +1691,7 @@ impl Spiltixal {
                                             pos: vec2(0.5, 0.5),
                                             size: vec2(0.24, 0.24),
                                             rotation_deg: 0.0,
-                                            tint: [255, 255, 255, 255],
+                                            tint: [255, 255, 255, 230],
                                             animation: OverlayAnimation::None,
                                             texture: None,
                                         };
@@ -1710,6 +1718,10 @@ impl Spiltixal {
                                 ui.horizontal(|ui| {
                                     ui.label("Width");
                                     ui.add(egui::Slider::new(&mut state.stroke_width, 1.0..=10.0));
+                                });
+                                ui.horizontal(|ui| {
+                                    ui.label("Opacity");
+                                    ui.add(egui::Slider::new(&mut state.draw_opacity, 10..=255));
                                 });
                                 if ui.button("Clear Drawing").clicked() {
                                     state.drawing.clear();
@@ -1752,6 +1764,10 @@ impl Spiltixal {
                                 ui.horizontal(|ui| {
                                     ui.label("Tint");
                                     show_color_picker(ui, &mut layer.tint);
+                                });
+                                ui.horizontal(|ui| {
+                                    ui.label("Opacity");
+                                    ui.add(egui::Slider::new(&mut layer.tint[3], 10..=255));
                                 });
                                 ui.horizontal(|ui| {
                                     ui.label("Animation");
@@ -1806,6 +1822,7 @@ impl Spiltixal {
                                         state.selected_layer = None;
                                         state.active_stroke.clear();
                                         state.drawing.clear();
+                                        state.draw_opacity = 220;
                                         state.path_error.clear();
                                         state.reset_confirm_step = 0;
                                     }
@@ -3092,7 +3109,7 @@ impl Spiltixal {
                         full_msg.push_str(&term);
                     }
                     self.mate.send_message(full_msg);
-                    if is_customize { self.customize = Some(CustomizeState::from_config(&self.config)); }
+                    if is_customize { self.open_customize(); }
                 }
             }
         }
