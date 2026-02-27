@@ -3,7 +3,7 @@ Spiltixal is a fully customizable Linux terminal featuring Bob! It's a lightweig
 
 Built in Rust
 
-# Some visual assets were created with AI
+# Some visual elements and backgrounds were created with AI assistance
 
 # Bob (Your AI Companion)
 AI model based on the Alibaba Cloud server.
