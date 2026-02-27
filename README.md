@@ -29,9 +29,8 @@ AI requests are processed temporarily and are not saved locally.
 
 ## How to Customize
 
-** Say this to Bob:
+Say this to Bob:
 "Customize"
-He will bring you to the customize screen
 
 ## Spiltixal is built for people who love:
 - Linux customization
