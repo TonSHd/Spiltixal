@@ -6,7 +6,7 @@ Built in Rust
 # Some visual elements and backgrounds were created with AI assistance
 
 # Bob (Your AI Companion)
-AI model powered by qwen2.5:0.5b
+**AI model powered by qwen2.5:0.5b**
 Bob uses a remote AI inference service hosted on Alibaba Cloud.
 
 It can help you with:
