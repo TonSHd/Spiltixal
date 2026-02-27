@@ -1,0 +1,55 @@
+[package]
+name        = "spiltixal"
+version     = "0.1.0"
+edition     = "2021"
+authors     = ["TonSHd"]
+description = "A cool looking terminal"
+license     = "MIT"
+repository  = "https://github.com/TonSHd/spiltixal"
+keywords    = ["terminal"]
+categories  = ["command-line-utilities"]
+
+[[bin]]
+name = "spiltixal"
+path = "src/main.rs"
+
+[dependencies]
+# GUI
+eframe        = { version = "0.27", features = ["persistence"] }
+egui          = "0.27"
+egui_extras   = { version = "0.27", features = ["image", "all_loaders"] }
+image         = { version = "0.25", default-features = false, features = ["png", "jpeg", "gif", "webp", "bmp", "tiff", "ico", "pnm", "hdr"] }
+
+# PTY / terminal emulation
+portable-pty  = "0.8"
+vte           = "0.13"
+
+# Async runtime
+tokio         = { version = "1", features = ["full"] }
+
+# HTTP client for AI (Ollama / OpenAI-compatible)
+reqwest       = { version = "0.11", features = ["json", "rustls-tls"], default-features = false }
+
+# Serialization
+serde         = { version = "1", features = ["derive"] }
+serde_json    = "1"
+
+# Channels & concurrency
+crossbeam-channel = "0.5"
+
+# Utilities
+dirs          = "5"
+log           = "0.4"
+env_logger    = "0.11"
+regex         = "1"
+unicode-width = "0.1"
+parking_lot   = "0.12"
+anyhow        = "1"
+chrono        = { version = "0.4", features = ["serde"] }
+lazy_static   = "1"
+
+[profile.release]
+opt-level     = 3
+lto           = true
+codegen-units = 1
+strip         = true
