@@ -55,7 +55,7 @@ Inside you can choose if you want to install Spiltixal into /usr/bin/
 Once you press "Yes"
 You can run it from anywhere.
 
-# If you want to support me ❤️
+# If you want to support me
 BTC Wallet: bc1qz6v0tl48hpv075l0u3lww7mj4dj5xarjtkwa2x
 
 Thank you and **Enjoy!**
